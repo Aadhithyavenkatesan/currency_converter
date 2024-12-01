@@ -56,11 +56,12 @@ class _HomeState extends State<Home> {
                 }
                 return Center(
                   child: FutureBuilder<>(future: future, builder: builder),
-                )
+                );
               }
           ),
         ),
       ),
+    )
     );
   }
 }
