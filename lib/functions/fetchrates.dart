@@ -1,3 +1,4 @@
+import 'package:currency_converter/models/allCurrencies.dart';
 import 'package:currency_converter/models/ratesmodelfromjson.dart';
 import 'package:currency_converter/utils/key.dart';
 import 'package:http/http.dart' as http;

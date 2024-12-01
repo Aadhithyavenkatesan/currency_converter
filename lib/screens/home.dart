@@ -1,3 +1,4 @@
+import 'package:currency_converter/components/usdToany.dart';
 import 'package:currency_converter/functions/fetchrates.dart';
 import 'package:currency_converter/models/ratesmodelfromjson.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +14,14 @@ class _HomeState extends State<Home> {
   
   final formkey = GlobalKey<FormState>; 
   late Future<RatesModel> result;
+  late Future<Map> allCurrencies;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     result = fetchrates();
+    allCurrencies = fetchcurrencies();
   }
 
   @override
@@ -55,7 +58,23 @@ class _HomeState extends State<Home> {
                   );
                 }
                 return Center(
-                  child: FutureBuilder<>(future: future, builder: builder),
+                  child: FutureBuilder<Map>(
+                    future: allCurrencies, 
+                    builder: (context, currSnapshot){
+                      if (currSnapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      return Column(
+                        children: [
+                          UsdToAny(
+                            rates: snapshot.data!.rates, 
+                            currencies: currSnapshot.data!),
+                        ],
+                      );
+
+                    }),
                 );
               }
           ),

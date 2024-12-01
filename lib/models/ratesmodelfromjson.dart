@@ -24,7 +24,7 @@ class RatesModel {
     license: json["license"], 
     timestamp: json["timestamp"], 
     base: json["base"], 
-    rates: Map.from(json["rates"]).map<String, double>((k, v) => MapEntry(k, v.toDouble)));
+    rates: Map.from(json["rates"]).map((k, v) => MapEntry<String, double>(k, v)));
 
     Map<String, dynamic> toJson() => {
       "disclaimer" : disclaimer,
