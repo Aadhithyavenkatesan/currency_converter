@@ -23,3 +23,10 @@ String convertusd(Map exchangeRates, String usd, String currency){
 
   return output;
 }
+
+String convertany(Map exchangeRates, String amount, String currencyBase, String currencyfinal){
+  String output = ((double.parse(amount) / exchangeRates[currencyBase]) * exchangeRates[currencyfinal]).toStringAsFixed(2).toString();
+
+
+  return output;
+}
