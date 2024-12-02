@@ -16,3 +16,10 @@ Future<Map> fetchcurrencies() async{
   final allCurrencies = allCurrenciesFromJson(response.body);
   return allCurrencies;
 }
+
+
+String convertusd(Map exchangeRates, String usd, String currency){
+  String output = ((exchangeRates[currency] * double.parse(usd).toStringAsFixed(2))).toString();
+
+  return output;
+}

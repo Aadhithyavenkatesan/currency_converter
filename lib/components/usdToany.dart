@@ -1,3 +1,4 @@
+import 'package:currency_converter/functions/fetchrates.dart';
 import 'package:flutter/material.dart';
 
 class UsdToAny extends StatefulWidget {
@@ -14,7 +15,7 @@ class UsdToAny extends StatefulWidget {
 class _UsdToAnyState extends State<UsdToAny> {
   TextEditingController usdController = TextEditingController();
   String dropdownValue = 'INR';
-  String result = 'Converted Currency';
+  String answer = 'Converted Currency';
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +80,36 @@ class _UsdToAnyState extends State<UsdToAny> {
                     setState(() {
                       dropdownValue = newValue!;
                     });
-                  }))
+                  })),
+
+                  SizedBox(
+                    width: 10,
+                  ),
+
+                  Container(
+                    child: ElevatedButton(
+                      onPressed: (){
+                      setState(() {
+                        answer = usdController.text + 'USD      =      ' + convertusd(widget.rates, usdController.text, dropdownValue) + ' ' + dropdownValue;
+                      });
+                    }, 
+                    child: Text('Convert'),
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateColor.resolveWith((states) => Colors.blue.shade400)
+                    ), ),
+                  )
               ],
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            Container(
+              child: Text(answer,
+              style: TextStyle(
+                color: Colors.white
+              ),),
             )
           ],
         )
