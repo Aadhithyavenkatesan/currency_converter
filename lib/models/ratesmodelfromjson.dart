@@ -19,19 +19,23 @@ class RatesModel {
   String base;
   Map<String, double> rates;
 
-  factory RatesModel.fromJson(Map<String, dynamic> json)=> RatesModel(
-    disclaimer: json["disclaimer"], 
-    license: json["license"], 
-    timestamp: json["timestamp"], 
-    base: json["base"], 
-    rates: Map.from(json["rates"]).map((k, v) => MapEntry<String, double>(k, v)));
+  factory RatesModel.fromJson(Map<String, dynamic> json) => RatesModel(
+        disclaimer: json["disclaimer"] ?? '',
+        license: json["license"] ?? '',
+        timestamp: json["timestamp"] ?? 0,
+        base: json["base"] ?? '',
+        rates: json["rates"] == null
+            ? {}
+            : Map.from(json["rates"]).map((k, v) => MapEntry<String, double>(
+                k, (v is num ? v.toDouble() : 0.0))),
+      );
 
-    Map<String, dynamic> toJson() => {
-      "disclaimer" : disclaimer,
-      "license" : license,
-      "timestamp" : timestamp,
-      "base" : base,
-      "rates" : Map.from(rates).map((k, v) => MapEntry<String, dynamic>(k, v))
-    };
+  Map<String, dynamic> toJson() => {
+        "disclaimer": disclaimer,
+        "license": license,
+        "timestamp": timestamp,
+        "base": base,
+        "rates": Map.from(rates)
+            .map((k, v) => MapEntry<String, dynamic>(k, v)),
+      };
 }
-

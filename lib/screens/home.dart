@@ -31,7 +31,10 @@ class _HomeState extends State<Home> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.grey.shade900,
-          title: Text('Currency Converter'),
+          title: Text('Currency Converter',
+          style: TextStyle(
+            color: Colors.white
+          ),),
           centerTitle: true,
         ),
         body: Container(
@@ -40,7 +43,7 @@ class _HomeState extends State<Home> {
           padding: EdgeInsets.only(top: 65, left: 15, right: 15),
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assests/assets/bg-currency_ex.png"),
+                image: AssetImage("assets/bg-currency_ex.png"),
                 fit: BoxFit.cover),
           ),
           child: SingleChildScrollView(
@@ -67,13 +70,13 @@ class _HomeState extends State<Home> {
                             return Column(
                               children: [
                                 UsdToAny(
-                                    rates: snapshot.data!.rates,
+                                    rates: snapshot.data?.rates,
                                     currencies: currSnapshot.data!),
                                 SizedBox(
                                   height: 75,
                                 ),
                                 anyToAny(
-                                    rates: snapshot.data!.rates,
+                                    rates: snapshot.data?.rates,
                                     currencies: currSnapshot.data!)
                               ],
                             );

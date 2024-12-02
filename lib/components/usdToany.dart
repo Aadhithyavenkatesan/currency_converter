@@ -32,7 +32,8 @@ class _UsdToAnyState extends State<UsdToAny> {
               child: Text('USD to Any Currency', 
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold),),
+                fontWeight: FontWeight.bold,
+                color: Colors.white),),
             ),
             SizedBox(
               height: 20,

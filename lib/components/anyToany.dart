@@ -29,8 +29,11 @@ class _anyToAnyState extends State<anyToAny> {
               Container(
                 alignment: Alignment.center,
                 child: Text(
-                  'USD to Any Currency',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  'Any to Any Currency',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
               ),
               SizedBox(
